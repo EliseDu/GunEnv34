@@ -1,0 +1,154 @@
+/* =========================
+   Fontes Marianne
+   ========================= */
+
+@font-face {
+  font-family: 'Marianne';
+  src: url('fontes_web/Marianne-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Marianne';
+  src: url('fontes_web/Marianne-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* =========================
+   Base
+   ========================= */
+
+body {
+  font-family: 'Marianne', Arial, Helvetica, sans-serif;
+  background-color: #e9eff7;
+  color: #000;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Marianne', Arial, Helvetica, sans-serif;
+  color: #000091;
+}
+
+/* =========================
+   Conteneurs
+   ========================= */
+
+/* Carte autour d’un champ Shiny */
+.input-card {
+  background-color: #ffffff;
+  padding: 16px 20px;
+  margin-bottom: 5px;
+  display: block;
+  width: 100%;
+}
+
+.input-card .shiny-input-container {
+  width: 100%;
+}
+
+/* Style du champ UNIQUEMENT */
+.input-card .form-control {
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: block;
+  width: 100%;
+  border-top: 4px solid #000091;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* =========================
+   Header
+   ========================= */
+
+.header-logo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #d4d4d4;
+  margin-bottom: 20px;
+}
+
+/* Logo à gauche */
+.header-logo a {
+  z-index: 2;
+}
+
+/* Titre centré */
+.header-logo h1 {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  text-align: center;
+  width: 100%;
+  pointer-events: none; /* évite conflits clics */
+}
+
+/* =========================
+   Boutons
+   ========================= */
+
+.btn {
+  border-radius: 999px;
+  font-family: 'Marianne', Arial, sans-serif;
+  font-weight: 600;
+}
+
+.btn:focus,
+.btn:active {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(0, 0, 145, 0.25);
+}
+
+/* Bouton retour */
+
+#retour {
+  background-color: #ffffff;
+  color: #000091;
+  border: 1px solid #000091;
+}
+
+#retour:hover {
+  background-color: #000091;
+  color: #ffffff;
+}
+
+/* Bouton reset */
+
+#reset {
+  background-color: #E1000F;
+  border-color: #E1000F;
+  color: #ffffff;
+}
+
+#reset:hover {
+  background-color: #ff3333;
+}
+
+/* =========================
+   Styles anti “scolaire”
+   ========================= */
+
+.bloc-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #000091;
+  background-color: #eef4fc;
+  border-left: 5px solid #000091;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.question-subtitle {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #666666;
+  margin-bottom: 6px;
+}

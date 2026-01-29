@@ -1,0 +1,178 @@
+---
+title: ""
+author: ""
+date: ""
+output:
+  odt_document:
+    reference_odt: "style.odt"
+    pandoc_args: ["--wrap=preserve"]
+    keep_md: true
+encoding: UTF-8
+params:
+  aiot: ""
+  type_operation: ""
+  commune: ""
+  procedure: ""
+  description_courte: ""
+  contexte: ""
+  localisation: ""
+  description_projet: ""
+  travaux: ""
+  travaux_long: ""
+  depot_dossier: ""
+  code_aiot: ""
+  rubriques_aiot: ""
+  procedures_embarquees: ""
+  demande_complements: "" 
+  completude: ""
+  services_contributeurs: ""
+  organismes: ""
+  cnpn: ""
+  reserves: ""
+  enquete_publique: ""
+  consultation_publique: ""
+  avis_consultation_publique: ""
+  constat_procedures_embarquees: ""
+  recommandations: ""
+  ratio_compensation: ""
+  integration_envir: ""
+  integration_envir_travaux: ""
+  
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  warning = FALSE,
+  message = FALSE,
+  fig.width = 7,
+  fig.height = 4,
+  dpi = 300,
+  out.width = "100%"
+)
+
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+library(ggplot2)
+
+last_thursday <- function(date = Sys.Date()) {
+  first_next_month <- as.Date(format(date + 31, "%Y-%m-01"))
+  last_day_month <- first_next_month - 1
+  offset <- (as.POSIXlt(last_day_month)$wday - 4) %% 7
+  last_day_month - offset
+}
+
+```
+# RAPPORT DE PRÉSENTATION AU CONSEIL DÉPARTEMENTAL DE L’ENVIRONNEMENT ET DES RISQUES SANITAIRES ET TECHNOLOGIQUES  
+
+|||
+|:---|:---|
+|SÉANCE DU|`r format(last_thursday(), "%d %B %Y")`|
+|OBJET :|projet d’arrêté d’autorisation portant sur `r params$type_operation` `r params$procedure`|
+||Commune de `r params$commune`|
+||N°GunEnv : N° AIOT-`r params$code_aiot` (téléprocédure)|
+|MAÎTRE D’OUVRAGE :| `r params$aiot`|
+|RAPPORTEUR :| Monsieur le directeur départemental des territoires et de la mer (DDTM 34)|  
+
+
+
+## Présentation du projet
+
+Le dossier présenté par `r params$aiot` concerne le projet `r params$type_operation` `r params$procedure`, `r params$description_courte`
+
+### Contexte général et historique
+
+`r params$contexte`
+
+### Localisation du projet et situation actuelle
+
+Le projet traverse les communes de `r params$localisation`.
+
+### Présentation des aménagements et objectifs
+
+Le projet vise à `r params$description_projet`  
+
+Les travaux consistent en :  
+-  `r params$travaux`
+    
+### Description de la phase de travaux
+
+`r params$travaux_long`
+
+## Déroulement de l’instruction
+
+### Contexte réglementaire
+
+Le dossier d'autorisation environnementale déposé au guichet unique le `r params$depot_dossier` sous le n° AIOT-`r params$code_aiot` a été établi au titre des articles L 214-1 et suivants et L.181-1 et suivants du code de l'environnement pour les rubriques suivantes :  
+
+```{r rubriques_aiot, results='asis', echo=FALSE}
+cat("\n\n")
+knitr::kable(
+  params$rubriques_aiot
+)
+cat("\n\n")
+```
+
+  
+L'autorisation environnementale tient lieu également :  
+
+`r params$procedures_embarquees`
+
+### Étapes clés – déroulement de la procédure
+
+`r params$demande_complements` 
+
+Le dossier a ensuite été déclaré complet et régulier en date du `r params$completude`.  
+
+Les services contributeurs :
+
+```{r services_contributeurs, results='asis', echo=FALSE}
+cat("\n\n")
+knitr::kable(
+  params$services_contributeurs
+) 
+cat("\n\n")
+```
+
+  
+    
+Concernant les consultations des organismes obligatoires :  
+```{r organismes, results='asis', echo=FALSE}
+cat("\n\n")
+knitr::kable(
+  params$organismes
+) 
+cat("\n\n")
+```
+
+`r params$cnpn`
+`r params$reserves`
+les espèces protégées : les remarques de la DREAL et du CNPN ont été intégrées au dossier et les compensations précisées.  
+
+## Enquête publique
+
+Suite à la phase de complétude et régularité, le dossier a été jugé complet et régulier, la DDTM34 a proposé l'ouverture de `r params$enquete_publique`  
+- `r params$consultation_publique`.
+
+La commission d’enquête a émis un `r params$avis_consultation_publique`, après avoir constaté que :   
+`r params$constat_procedures_embarquees`  
+
+Les principales recommandations de la commission d’enquête ont été reprises sous forme de prescriptions dans le projet d'arrêté d'autorisation, notamment :  
+- `r params$recommandations`
+
+## Conclusion et propositions des services instructeurs
+
+Les impacts environnementaux identifiés font l'objet de mesures d'évitement, de réduction et de compensation appropriées,
+- `r params$ratio_compensation`  
+
+### Mesures de protection, de prévention et compensatoires
+
+Les principales intégrations environnementales sont :  
+- `r params$integration_envir`  
+
+En phase travaux, il est également prévu :  
+- `r params$integration_envir_travaux`  
+
+Compte tenu des points ci-dessus, le rapporteur propose au conseil départemental de l'environnement et des risques sanitaires et technologiques, au vu des informations qui précèdent et sous réserve des prescriptions énumérées dans le projet d'arrêté ci-joint de formuler un **AVIS FAVORABLE** au projet d’arrêté.  
+
+Le directeur
